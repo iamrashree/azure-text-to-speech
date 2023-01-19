@@ -3,7 +3,7 @@ import * as AzureTTSSdk from 'microsoft-cognitiveservices-speech-sdk';
 import { SpeechSynthesisOutputFormat } from 'microsoft-cognitiveservices-speech-sdk';
 
 import { Buffer } from 'buffer';
-import { appConfig } from 'src/environments/config';
+import { appConfig } from 'src/environments/appConfig';
 
 @Injectable({
   providedIn: 'root'

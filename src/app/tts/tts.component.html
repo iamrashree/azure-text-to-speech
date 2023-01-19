@@ -1,0 +1,67 @@
+<!-- <form [formGroup]="ttsFormGroup">
+  <div>
+    <textarea rows="10" style="width: 650px;" formControlName="segmentData"></textarea>
+  </div>
+  <br/>
+  <div>
+    <mat-form-field appearance="outline">
+        <mat-label>Favorite food</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let voice of voices">
+            {{voice.ShortName}}({{voice.Gender}})
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-slide-toggle>Toggle me!</mat-slide-toggle>
+    Speed rate&nbsp;&nbsp;<input  type="number" formControlName="speedRate" />&nbsp;&nbsp;
+    Voice&nbsp;&nbsp;<select class="custom-select" formControlName="voice">&nbsp;&nbsp;
+        <option *ngFor="let voice of voices" [ngValue]="voice">
+            {{voice.ShortName}}({{voice.Gender}})
+          <option>
+    </select> &nbsp;&nbsp;
+    <button (click)="convert()">convert</button>
+  </div>
+</form> -->
+
+
+<form [formGroup]="ttsFormGroup">
+  <div style="width: 100%; display: flex;">
+    <div style="width: 20%;"></div>
+
+    <div style="width: 60%; display: flex; flex-flow: column; align-items: center; justify-content: center;">
+      <mat-form-field style="width: 70%;" appearance="outline">
+        <mat-label>Enter text to convert into voice</mat-label>
+        <textarea matInput formControlName="segmentData" placeholder="Ex. Enjoy using Text to Speech!" rows="8"></textarea>
+      </mat-form-field>
+
+      <div style="width:70%; display: flex; gap: 20px;">
+        <mat-form-field style="width: 70%;" appearance="outline">
+          <mat-label>Select voice</mat-label>
+          <mat-select formControlName="voice">
+            <mat-option *ngFor="let voice of voices" [value]="voice">
+              {{voice.ShortName}}({{voice.Gender}})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="width: 30%;" appearance="outline">
+          <mat-label>Speed rate</mat-label>
+          <input matInput formControlName="speedRate" type="number" value="1" rows="8"/>
+        </mat-form-field>
+      </div>
+
+      <button (click)="converToSpeech()" [disabled]="!ttsFormGroup.valid" mat-raised-button color="primary">Convert to Speech</button>
+      <br/>
+      <mat-spinner *ngIf="spinner"></mat-spinner>
+
+      <audio controls="controls" *ngIf="blobURL">
+        <source [src]="blobURL" type="audio/wav">
+     </audio>
+
+     <br/>
+     <div *ngIf="error">{{ error }}</div>
+    </div>
+
+    <div style="width: 20%;"></div>
+  </div>
+</form>

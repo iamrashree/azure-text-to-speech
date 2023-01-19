@@ -10,6 +10,6 @@ export class TtsService {
   constructor(private http: HttpClient) { }
 
   public getVoices(): Observable<any> {
-    return this.http.get('../assets/voices.json');
+    return this.http.get('/src/assets/voices.json');
   }
 }

@@ -8,6 +8,7 @@
 
 /src/environments/appConfig.ts
 # Node
+
 /node_modules
 npm-debug.log
 yarn-error.log

@@ -1,4 +1,4 @@
 export const appConfig = {
-    key: 'test',
-    region: 'test'
+    key: 'test1',
+    region: 'test1'
 }
